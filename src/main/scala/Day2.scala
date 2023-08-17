@@ -2,39 +2,15 @@ package code.advent
 
 import scala.io.Source
 
-
-object CalorieCounter {
+object Day2 {
   def main(args: Array[String]): Unit = {
-    println("Hello World!")
-//    day1()
     day2()
   }
 
-  private def day1(): Unit = {
-    val fileName = "/Users/vaishnavi.raj/Documents/Projects/AdventOfCode/src/main/resources/day-01"
-    val list = scala.collection.mutable.ListBuffer[Int]()
-    var sum = 0
-    val source = Source.fromFile(fileName)
-    source.getLines().toList.collect {
-      a => if(a.isBlank) {
-        list.addOne(sum)
-        sum = 0
-      } else {
-        sum = sum + a.toInt
-      }
-    }
-    val sortedList = list.sorted.reverse
-    println(s"Part 1 - Elves with most amount of calories ${sortedList.head}")
-    println(s"Part 2 - Sum of the calories being carried by the top three eleves ${sortedList.take(3).sum}")
-
-    source.close()
-  }
-
   private def day2(): Unit = {
-    val fileName = "/Users/vaishnavi.raj/Documents/Projects/AdventOfCode/src/main/resources/day-02"
-    val source = Source.fromFile(fileName)
+    val source = Source.fromResource("day-02")
     val input = source.getLines().toList
-//    val input = List("A Y", "B X", "C Z")
+    //    val input = List("A Y", "B X", "C Z")
     val resultScores = Map(
       "Z" -> 6,
       "Y" -> 3,
@@ -46,11 +22,11 @@ object CalorieCounter {
       "C" -> 3
     )
     val shapes = Map(
-       "A" -> Map(
+      "A" -> Map(
         "Z" -> "B",
         "Y" -> "A",
         "X" -> "C"
-       ),
+      ),
       "B" -> Map(
         "Z" -> "C",
         "Y" -> "B",
@@ -116,6 +92,4 @@ object CalorieCounter {
     println(s"Part 2 => $part2")
     source.close()
   }
-
-
 }
